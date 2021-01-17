@@ -3,14 +3,29 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
+
   def new
     @product = Product.new
+    
+    @category = Category.find(params[:category_id])
+    
   end
 
   def create
+    
     @product = Product.create(product_params)
-  
-    redirect_to products_path
+   
+    @product.category = Category.find(params[:category_id])
+    
+    if @product.save
+      redirect_to category_path(@product.category), notice: 'Produit créé.'
+    else
+      render :new
+    end
+    
   end
 
   def edit
@@ -20,13 +35,13 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
-    redirect_to products_path
+    redirect_to category_path
   end
 
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to products_path
+    redirect_to category_path
   end
 
   private

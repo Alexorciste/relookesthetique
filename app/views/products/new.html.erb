@@ -1,16 +1,28 @@
-<%= form_for(@product) do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name, required: true, autofocus: true, placeholder: "Enter product name" %>
-  </p>
-
+ 
+  
   
 
-  <p>
-    <%= f.label :price_cents %><br>
-    <%= f.number_field :price_cents, required: true %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end%>
+<%= simple_form_for [@category, @product] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<div class="text-editor">
+
+  <div class="form-inputs">
+    <%= f.input :name, label: "Titre" %>
+    
+  </div>
+
+  <div class="form-inputs">
+    
+    <%= f.input :price_cents %> 
+  </div>  
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sauvegarder", class: "btn btn-dark" %>
+    
+  </div>
+
+</div>
+
+<% end %>

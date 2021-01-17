@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
+  # get 'categories/index'
+  # get 'categories/show'
+  # get 'categories/new'
+  # get 'categories/create'
+  # get 'categories/update'
+  # get 'categories/edit'
+  # get 'categories/destroy'
 devise_for :users
-root to: 'products#index'
-resources :products
+root to: 'categories#index'
+resources :categories do
+  resources :products
+end
 resources :orders
 
 get 'carts/:id' => "carts#show", as: "cart"
@@ -14,7 +23,6 @@ post 'line_items' => "line_items#create"
 get 'line_items/:id' => "line_items#show", as: "line_item"
 delete 'line_items/:id' => "line_items#destroy"
 
-resources :products
-resources :orders
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -15,8 +15,8 @@ epilation = Category.create!(name: 'epilation')
 massage = Category.create!(name: 'massages')
 
 puts 'Creating products...'
-Product.create!(sku: 'massage thai', name: 'massage thai', category: massage) 
-Product.create!(sku: 'poil trop longs', name: 'polis trop longs', category: epilation)
-Product.create!(sku: 'poil des pieds',   name: 'poils des pieds',      category: epilation)
-Product.create!(sku: 'raoul',   name: 'le cri qui desaoule',      category: epilation)
+Product.create!(sku: 'massage thai', name: 'massage thai', category: massage, price_cents: '502') 
+Product.create!(sku: 'poil trop longs', name: 'polis trop longs', category: epilation, price_cents: '502')
+Product.create!(sku: 'poil des pieds',   name: 'poils des pieds',      category: epilation, price_cents: '502')
+Product.create!(sku: 'raoul',   name: 'le cri qui desaoule',      category: epilation, price_cents: '502')
 puts 'Finished!'

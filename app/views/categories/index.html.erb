@@ -1,0 +1,12 @@
+<h1>Categories</h1>
+
+<% @categories.each do |category| %>
+
+  <p>Name: <%= category.name %> </p>
+   
+  <%# <p> %>
+    <%# <%= link_to "Edit", edit_product_path(product) %> 
+    <%# <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%# <%= button_to "Add #{product.name} to cart", line_items_path(:product_id => product.id) %> 
+  <%# </p> %>
+<% end%>
