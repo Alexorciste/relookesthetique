@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  # skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @products = Product.all
   end
@@ -9,23 +11,17 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    
     @category = Category.find(params[:category_id])
-    
   end
 
   def create
-    
     @product = Product.create(product_params)
-   
     @product.category = Category.find(params[:category_id])
-    
     if @product.save
       redirect_to category_path(@product.category), notice: 'Produit créé.'
     else
       render :new
     end
-    
   end
 
   def edit
@@ -45,7 +41,8 @@ class ProductsController < ApplicationController
   end
 
   private
-    def product_params
-      params.require(:product).permit(:name, :price_cents)
-    end
+
+  def product_params
+    params.require(:product).permit(:name, :price_cents)
+  end
 end

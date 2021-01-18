@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
     session[:cart_id] = nil
     redirect_to root_path
   end
-  
+
   private
     def order_params
       params.require(:order).permit(:name, :email, :address, :pay_method)
